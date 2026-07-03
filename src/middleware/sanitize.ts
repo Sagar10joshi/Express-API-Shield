@@ -40,17 +40,7 @@ function stripKeys(value: unknown, dangerousKeys: string[], depth = 0): void {
   }
 }
 
-// export function createSanitizeMiddleware(config: SanitizeConfig): RequestHandler {
-//   const dangerousKeys = config.removeKeys ?? DEFAULT_DANGEROUS_KEYS;
 
-//   return function sanitize(req, _res, next) {
-//     if (req.body) stripKeys(req.body, dangerousKeys);
-//     if (req.query) stripKeys(req.query, dangerousKeys);
-//     if (req.params) stripKeys(req.params, dangerousKeys);
-//     next();
-//   };
-  
-// }
 
 export function createSanitizeMiddleware(
   config: SanitizeConfig,
@@ -62,12 +52,13 @@ export function createSanitizeMiddleware(
 
     // Reject excessively deep objects
     if (req.body && getDepth(req.body) > MAX_DEPTH) {
-      return res.status(400).json({
-        success: false,
-        code: "SUSPICIOUS_REQUEST",
-        reason: "Request body nesting exceeds maximum depth",
-      });
-    }
+  return fail(
+    req,
+    res,
+    "SUSPICIOUS_REQUEST",
+    "Request body nesting exceeds maximum depth"
+  );
+}
 
     if (req.body) stripKeys(req.body, dangerousKeys);
     if (req.query) stripKeys(req.query, dangerousKeys);

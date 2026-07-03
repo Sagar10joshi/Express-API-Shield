@@ -89,22 +89,22 @@ export function buildShieldMiddleware(rawConfig: ApiShieldConfig): RequestHandle
   }
 
   if (config.deepPayloadProtection) {
-  const maxDepth =
-    typeof config.deepPayloadProtection === 'object'
-      ? config.deepPayloadProtection.maxDepth ?? 6
-      : 6;
+    const maxDepth =
+      typeof config.deepPayloadProtection === 'object'
+        ? config.deepPayloadProtection.maxDepth ?? 6
+        : 6;
 
-  stages.push(createHeaderLimitMiddleware(100, fail));
-}
+    stages.push(createHeaderLimitMiddleware(100, fail));
+  }
 
-if (config.queryProtection) {
-  const maxLength =
-    typeof config.queryProtection === 'object'
-      ? config.queryProtection.maxLength ?? 2000
-      : 2000;
+  if (config.queryProtection) {
+    const maxLength =
+      typeof config.queryProtection === 'object'
+        ? config.queryProtection.maxLength ?? 2000
+        : 2000;
 
-  stages.push(createQueryLimitMiddleware(maxLength, fail));
-}
+    stages.push(createQueryLimitMiddleware(maxLength, fail));
+  }
 
 
 
@@ -125,11 +125,11 @@ if (config.queryProtection) {
     stages.push(createSuspiciousRequestMiddleware(srConfig, fail));
   }
 
-    // MUST run when suspiciousRequests is enabled
-if (config.suspiciousRequests) {
-  stages.push(createQueryLimitMiddleware(2000, fail));
-  stages.push(createHeaderLimitMiddleware(100, fail));
-}
+  // MUST run when suspiciousRequests is enabled
+  if (config.suspiciousRequests) {
+    stages.push(createQueryLimitMiddleware(2000, fail));
+    stages.push(createHeaderLimitMiddleware(100, fail));
+  }
 
 
   // 11. Security headers (helmet) - set as early as possible in terms of the
