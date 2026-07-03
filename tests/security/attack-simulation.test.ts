@@ -47,9 +47,6 @@ describe('attack simulation suite', () => {
 
     const headers: Record<string, string> = {};
 
-    // for (let i = 0; i < 200; i++) {
-    //   headers[`x-test-${i}`] = 'A'.repeat(1000);
-    // }
 
     for (let i = 0; i < 80; i++) {
   headers[`x-test-${i}`] = 'A';

@@ -118,7 +118,7 @@ describe('apiShield - strict edge cases & attack resistance', () => {
     const app = buildApp({ suspiciousRequests: true });
 
     const longQuery = 'a'.repeat(20000);
-    // const longQuery = 'a'.repeat(5000);
+   
 
     const res = await request(app)
       .get('/?q=' + longQuery);
