@@ -23,6 +23,8 @@ import { createRateLimitMiddleware } from '../middleware/rateLimit';
 import { createQueryLimitMiddleware } from '../middleware/queryLimit';
 import { createHeaderLimitMiddleware } from '../middleware/headerLimit';
 
+
+
 function toListConfig(value: string[] | IpListConfig | undefined): { enabled: boolean; list: string[] } {
   if (!value) return { enabled: false, list: [] };
   if (Array.isArray(value)) return { enabled: value.length > 0, list: value };
@@ -88,14 +90,18 @@ export function buildShieldMiddleware(rawConfig: ApiShieldConfig): RequestHandle
     stages.push(createBodyLimitMiddleware(blConfig, fail));
   }
 
-  if (config.deepPayloadProtection) {
-    const maxDepth =
-      typeof config.deepPayloadProtection === 'object'
-        ? config.deepPayloadProtection.maxDepth ?? 6
-        : 6;
+  // if (config.deepPayloadProtection) {
+  //   const maxDepth =
+  //     typeof config.deepPayloadProtection === 'object'
+  //       ? config.deepPayloadProtection.maxDepth ?? 6
+  //       : 6;
 
-    stages.push(createHeaderLimitMiddleware(100, fail));
-  }
+  //   stages.push(createHeaderLimitMiddleware(100, fail));
+  // }
+
+  if (config.deepPayloadProtection) {
+  stages.push(createHeaderLimitMiddleware(100, fail));
+}
 
   if (config.queryProtection) {
     const maxLength =
@@ -115,8 +121,26 @@ export function buildShieldMiddleware(rawConfig: ApiShieldConfig): RequestHandle
 
   // 9. Sanitize (before suspicious-request scanning so stripped keys don't false-positive)
   if (config.sanitize) {
-    const sanConfig = typeof config.sanitize === 'object' ? config.sanitize : {};
-    stages.push(createSanitizeMiddleware(sanConfig, fail));
+    // const sanConfig = typeof config.sanitize === 'object' ? config.sanitize : {};
+    // stages.push(createSanitizeMiddleware(sanConfig, fail));
+
+    const sanConfig =
+  typeof config.sanitize === "object"
+    ? {
+        ...config.sanitize,
+        maxDepth:
+          typeof config.deepPayloadProtection === "object"
+            ? config.deepPayloadProtection.maxDepth
+            : undefined,
+      }
+    : {
+        maxDepth:
+          typeof config.deepPayloadProtection === "object"
+            ? config.deepPayloadProtection.maxDepth
+            : undefined,
+      };
+
+stages.push(createSanitizeMiddleware(sanConfig, fail));
   }
 
   // 10. Suspicious request detection

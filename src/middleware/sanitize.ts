@@ -6,6 +6,7 @@ const DEFAULT_DANGEROUS_KEYS = ['__proto__', 'constructor', 'prototype'];
 const MAX_DEPTH = 6;
 
 
+
 function getDepth(obj: any, depth = 0): number {
   if (!obj || typeof obj !== 'object') return depth;
 
@@ -43,10 +44,13 @@ function stripKeys(value: unknown, dangerousKeys: string[], depth = 0): void {
 
 
 export function createSanitizeMiddleware(
+  
   config: SanitizeConfig,
   fail: FailFn
 ): RequestHandler {
   const dangerousKeys = config.removeKeys ?? DEFAULT_DANGEROUS_KEYS;
+
+  
 
   return function sanitize(req, res, next) {
 
@@ -58,6 +62,7 @@ export function createSanitizeMiddleware(
     "SUSPICIOUS_REQUEST",
     "Request body nesting exceeds maximum depth"
   );
+  
 }
 
     if (req.body) stripKeys(req.body, dangerousKeys);
@@ -66,4 +71,6 @@ export function createSanitizeMiddleware(
 
     next();
   };
+  
 }
+

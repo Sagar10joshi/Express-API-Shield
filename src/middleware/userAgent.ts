@@ -1,5 +1,4 @@
 import type { Request, RequestHandler } from 'express';
-import type { UserAgentBlockConfig } from '../types';
 import type { FailFn } from '../utils/error';
 
 type Rule = string | RegExp | ((ua: string, req: Request) => boolean);

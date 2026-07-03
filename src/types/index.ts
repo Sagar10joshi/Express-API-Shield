@@ -119,9 +119,15 @@ export interface SuspiciousRequestConfig {
   action?: 'block' | 'log';
 }
 
+// export interface SanitizeConfig {
+//   enabled?: boolean;
+//   removeKeys?: string[];
+// }
+
 export interface SanitizeConfig {
   enabled?: boolean;
   removeKeys?: string[];
+  maxDepth?: number;
 }
 
 export interface RateLimitConfig {
