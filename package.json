@@ -1,0 +1,66 @@
+{
+  "name": "express-api-shield",
+  "version": "0.1.0",
+  "description": "A single, composable Express middleware combining API key auth, security headers, rate limiting, IP filtering, injection detection, request IDs, and more.",
+  "main": "./dist/index.cjs.js",
+  "module": "./dist/index.esm.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.esm.js",
+      "require": "./dist/index.cjs.js"
+    }
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage",
+    "lint": "eslint src tests --ext .ts",
+    "format": "prettier --write .",
+    "prepublishOnly": "npm run build",
+    "release": "changeset publish"
+  },
+  "keywords": [
+    "express",
+    "middleware",
+    "security",
+    "api",
+    "shield",
+    "rate-limit",
+    "helmet",
+    "api-key",
+    "cors",
+    "sanitize"
+  ],
+  "license": "MIT",
+  "peerDependencies": {
+    "express": ">=4.0.0"
+  },
+  "dependencies": {
+    "express-rate-limit": "^7.2.0",
+    "helmet": "^7.1.0",
+    "ipaddr.js": "^2.2.0"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.21",
+    "@types/node": "^20.12.7",
+    "@types/supertest": "^6.0.2",
+    "@typescript-eslint/eslint-plugin": "^7.7.0",
+    "@typescript-eslint/parser": "^7.7.0",
+    "@vitest/coverage-v8": "^1.5.0",
+    "eslint": "^8.57.0",
+    "express": "^4.19.2",
+    "prettier": "^3.2.5",
+    "supertest": "^6.3.4",
+    "tsup": "^8.0.2",
+    "typescript": "^5.4.5",
+    "vitest": "^1.6.1"
+  }
+}
