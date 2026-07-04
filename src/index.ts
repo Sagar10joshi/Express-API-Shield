@@ -27,4 +27,4 @@ apiShield.development = (overrides: ApiShieldConfig = {}): RequestHandler =>
   buildShieldMiddleware({ preset: 'development', ...overrides });
 
 export default apiShield;
-export { apiShield };
+export { apiShield, apiShield as shield };

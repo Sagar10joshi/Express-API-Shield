@@ -1,6 +1,6 @@
 {
   "name": "express-api-shield",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "A single, composable Express middleware combining API key auth, security headers, rate limiting, IP filtering, injection detection, request IDs, and more.",
   "main": "./dist/index.cjs.js",
   "module": "./dist/index.esm.js",
@@ -62,5 +62,18 @@
     "tsup": "^8.0.2",
     "typescript": "^5.4.5",
     "vitest": "^1.6.1"
-  }
+  },
+  "author": "Sagar Joshi",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Sagar10joshi/Express-API-Shield.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Sagar10joshi/Express-API-Shield/issues"
+  },
+  "homepage": "https://github.com/Sagar10joshi/Express-API-Shield#readme",
+  "engines": {
+    "node": ">=18"
+  },
+  "sideEffects": false
 }

@@ -286,7 +286,7 @@ Complete documentation—including configuration options, middleware reference, 
 
 > 📚 Documentation
 >
-> **https://your-documentation-website.com**
+> **https://express-api-shield-documentation.vercel.app**
 
 (Replace this URL with your documentation website after deployment.)
 
@@ -542,7 +542,7 @@ Express API Shield exposes a fully typed configuration API for complete control 
 
 📚 **Complete Configuration Reference**
 
-https://your-documentation-website.com/configuration
+https://express-api-shield-documentation.vercel.app
 
 ---
 
@@ -612,7 +612,7 @@ Every blocked request follows the same response format.
   "reason": "Too many requests.",
   "requestId": "a1b2c3d4",
   "timestamp": "2026-07-03T12:00:00Z",
-  "documentation": "https://your-documentation-website.com/errors"
+  "documentation": "https://express-api-shield-documentation.vercel.app"
 }
 ```
 
@@ -638,7 +638,7 @@ Detailed documentation is available online.
 
 📚 **Documentation**
 
-https://your-documentation-website.com
+https://express-api-shield-documentation.vercel.app
 
 ---
 
@@ -711,7 +711,7 @@ Plugins make it easy to keep project-specific logic outside the core library.
 
 📚 **Plugin Documentation**
 
-https://your-documentation-website.com/plugins
+https://express-api-shield-documentation.vercel.app
 
 ---
 
@@ -1002,7 +1002,7 @@ Complete documentation is available online, including:
 
 📚 **Documentation**
 
-https://your-documentation-website.com
+https://express-api-shield-documentation.vercel.app
 
 ---
 
@@ -1175,7 +1175,7 @@ Complete documentation is available on the official website.
 
 📚 **Documentation**
 
-**https://your-documentation-website.com**
+**https://express-api-shield-documentation.vercel.app**
 
 ---
 
@@ -1204,7 +1204,7 @@ Whether you're fixing bugs, improving documentation, suggesting new features, or
 ### Development
 
 ```bash
-git clone https://github.com/your-username/express-api-shield.git
+git clone https://github.com/Sagar10joshi/Express-API-Shield.git
 
 cd express-api-shield
 
