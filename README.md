@@ -1,4 +1,4 @@
-# 🛡️ Express API Shield
+# 🛡️ Express API Shield(Release v1.0.0)
 
 <p align="center">
   <strong>A composable, production-ready security middleware for Express.js applications.</strong>
