@@ -46,7 +46,7 @@ export function buildShieldMiddleware(rawConfig: ApiShieldConfig): RequestHandle
     logger.warn(`[shield] config warning (${issue.path}): ${issue.message}`);
   }
 
-  const documentationUrl = config.documentationUrl ?? 'https://github.com/your-org/express-api-shield/blob/main/docs/errors.md';
+  const documentationUrl = config.documentationUrl ?? 'https://github.com/Sagar10joshi/Express-API-Shield/blob/main/docs/errors.md';
   const hooks = config.hooks ?? {};
   const fail = createFail({ logger, hooks, documentationUrl });
   const globalIgnore = config.ignore ?? [];
